@@ -1,0 +1,48 @@
+---
+output: rmarkdown::github_document
+---
+
+`radb` : Tools to Query the 'Merit' 'RADb' Network Route Server
+
+The RADB whois server provides information collected from all the registries that form part of the Internet Routing Registry. These collected registries provide information on most of the networks and ASs routed in the Internet today.
+
+The following functions are implemented:
+
+- `radb_close`:	Close the connection to the Merit RADb server
+- `radb_match`:	Match an object of the specified type with the specified key
+- `radb_open`:	Open a persistent connection to the Merit RADb server
+- `radb_routes_by_origin`:	Get routes by origin
+- `radb_route_search`:	Perform route searches.
+- `radb_route_set`:	Get as-set or route-set
+- `radb_version`:	Get RADb version
+
+### Installation
+
+```{r eval=FALSE}
+devtools::install_github("hrbrmstr/radb")
+```
+
+```{r message=FALSE, warning=FALSE, error=FALSE, include=FALSE}
+options(width=120)
+```
+
+### Usage
+
+```{r message=FALSE, warning=FALSE, error=FALSE}
+library(radb)
+
+# current verison
+packageVersion("radb")
+
+radb_open() %>% 
+  radb_routes_by_origin("5650") %>% 
+  radb_route_set("as-google") %>% 
+  radb_route_set("as-google", TRUE) %>% 
+  radb_route_set("AS-MEEBO") %>% 
+  radb_match("mntner", "maint-as237") %>% 
+  radb_route_search("108.0.0.0/16", "l") %>% 
+  radb_route_search("198.93.34.0/24", "l") %>% 
+  radb_close() -> rdb
+
+print(rdb)
+```

@@ -1,0 +1,23 @@
+Package: radb
+Type: Package
+Title: Tools to Query the 'Merit' 'RADb' Network Route Server
+Version: 0.1.0
+Date: 2017-04-01
+Author: Bob Rudis (bob@rud.is)
+Maintainer: Bob Rudis <bob@rud.is>
+Description: The 'Merit' 'RADB' 'whois' server provides information collected from all the 
+    registries that form part of the 'Internet Routing Registry'. These collected 
+    registries provide information on most of the networks and 'ASs' routed in the 
+    internet today. Tools are provided to query this database.
+URL: https://github.com/hrbrmstr/radb
+BugReports: https://github.com/hrbrmstr/radb/issues
+License: AGPL
+Suggests:
+    testthat,
+    covr
+Depends:
+    R (>= 3.2.0)
+Imports:
+    purrr,
+    tibble
+RoxygenNote: 6.0.1

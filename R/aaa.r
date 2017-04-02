@@ -1,0 +1,1 @@
+sc <- purrr::safely(socketConnection)
